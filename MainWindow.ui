@@ -18,18 +18,8 @@
     <item>
      <widget class="QTreeWidget" name="treeWidget">
       <property name="columnCount">
-       <number>2</number>
+       <number>0</number>
       </property>
-      <column>
-       <property name="text">
-        <string notr="true">1</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string notr="true">2</string>
-       </property>
-      </column>
      </widget>
     </item>
    </layout>

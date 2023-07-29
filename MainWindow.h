@@ -4,6 +4,9 @@
 
 #include <QJsonDocument>
 #include <QMainWindow>
+#include <QTreeWidgetItem>
+
+#include <entity/IClient.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,16 +19,22 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+    IClient* _client;
+
 public:
-    MainWindow(QWidget* parent = nullptr);
+    MainWindow(IClient* client, QWidget* parent = nullptr);
     ~MainWindow();
 
 private slots:
     void sync();
+    void receiveData(QByteArray data);
 
 private:
     Ui::MainWindow* ui;
     QJsonDocument requestData();
+    void addRootEntry(QJsonObject data);
+    int getOrCreateColumn(QString name);
+    void addFields(QTreeWidgetItem *entry, QJsonObject data);
 };
 
 #endif // MAINWINDOW_H

@@ -17,6 +17,7 @@ public slots:
 signals:
     void receive(QByteArray data);
     void error(QString text);
+    void connectionEstablished();
 };
 
 #endif // ICLIENT_H
