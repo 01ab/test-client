@@ -22,6 +22,8 @@ MainWindow::MainWindow(IClient* client, QWidget* parent)
     // делаем тип первой колонкой
     ui->treeWidget->setColumnCount(1);
     ui->treeWidget->headerItem()->setText(0, "type");
+
+    statusBar()->showMessage("Trying to connect");
 }
 
 MainWindow::~MainWindow()
@@ -59,6 +61,8 @@ void MainWindow::receiveData(QByteArray data)
         statusBar()->showMessage("Answer is invalid or empty");
         return;
     }
+    ui->treeWidget->clear();
+
     // есть дерево объектов у объектов есть поля, эти поля пусть будут колонками в QTreeView
     QJsonArray blocks = content["blocks"].toArray();
     for (int i = 0; i < blocks.count(); ++i) {
